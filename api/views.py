@@ -15,13 +15,17 @@ class ProjectViewSet(viewsets.ModelViewSet):
     lookup_field = "name"
 
     @staticmethod
-    def response_if_valid_serializer (serializer):
+    def all_packages_are_valid (serializer):
         valid_packages = []
         for package in serializer.validated_data["packages"]:
             version = package["version"] if "version" in package else None
             pypi_response = PypiResponse(package["name"], version)
             valid_packages.append(pypi_response.is_valid_package())
-        if False in valid_packages:
+        return False not in valid_packages
+
+    @staticmethod
+    def response_if_valid_serializer (serializer):
+        if not ProjectViewSet.all_packages_are_valid(serializer):
             message = {"error": "One or more packages doesn't exist"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
         else:
