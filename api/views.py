@@ -14,25 +14,29 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     lookup_field = "name"
 
+    @staticmethod
+    def response_if_valid_serializer (serializer):
+        valid_packages = []
+        for package in serializer.validated_data["packages"]:
+            version = package["version"] if "version" in package else None
+            pypi_response = PypiResponse(package["name"], version)
+            valid_packages.append(pypi_response.is_valid_package())
+        if False in valid_packages:
+            message = {"error": "One or more packages doesn't exist"}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    # @action(detail=False, methods=['post'], url_name='projects')
-    def create(self, request):
-        valid_packages = True
-        print("teste")
-        serializer = ProjectSerializer(data=request.data)
+    @staticmethod
+    def appropriate_response (serializer):
         if serializer.is_valid() :
-            for package in serializer.validated_data["packages"]:
-                version = package["version"] if "version" in package else None
-                pypi_response = PypiResponse(package["name"], 
-                version)
-                if pypi_response.is_valid_package() == False:
-                    valid_packages = False
-            if valid_packages == False:
-                message = {"error": "One or more packages doesn't exist"}
-                return Response(message, status=status.HTTP_400_BAD_REQUEST)
-            else:
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return ProjectViewSet.response_if_valid_serializer(serializer)
         else:
             return Response(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
+
+
+    def create(self, request):
+        serializer = ProjectSerializer(data=request.data)
+        return ProjectViewSet.appropriate_response(serializer)

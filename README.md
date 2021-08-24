@@ -208,4 +208,14 @@ k6 run -e API_BASE='http://localhost:8080/' tests-open.js
 
 ---
 
+## Referências
+https://www.django-rest-framework.org/
+https://realpython.com/python-requests/
+https://pythonacademy.com.br/blog/construcao-de-apis-com-django-rest-framework
+https://klauslaube.com.br/2020/02/13/construindo-apis-em-django-com-django-rest-framework.html
+https://realpython.com/django-rest-framework-quick-start/
+https://stackoverflow.com/questions/34414326/why-is-assertdictequal-needed-if-dicts-can-be-compared-by/34414463
+https://medium.com/@ksarthak4ever/test-driven-development-tdd-in-django-and-django-rest-framework-drf-a889a8068cb7
+
+
 **Boa sorte!**

@@ -17,7 +17,7 @@ class PypiResponse():
         if self.version == "":
             return self.version
         else:
-            self.version = self.request_package_response().json["info"]["version"]
+            self.version = self.request_package_response().json()["info"]["version"]
             return self.version
 
     def is_valid_package(self):
