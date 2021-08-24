@@ -1,18 +1,16 @@
-import sys
-from magpy.request import PypiResponse
-# from requests.models import Response
-from rest_framework import generics, viewsets, status
+from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import action
 
+from magpy.request import PypiResponse
 from .models import Project
-from .serializers import PackageSerializer, ProjectSerializer
+from .serializers import  ProjectSerializer
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     lookup_field = "name"
+
 
     @staticmethod
     def all_packages_are_valid (serializer):
@@ -23,6 +21,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
             valid_packages.append(pypi_response.is_valid_package())
         return False not in valid_packages
 
+
     @staticmethod
     def response_if_valid_serializer (serializer):
         if not ProjectViewSet.all_packages_are_valid(serializer):
@@ -31,6 +30,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
         else:
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
     @staticmethod
     def appropriate_response (serializer):

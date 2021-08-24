@@ -1,20 +1,38 @@
+from api.serializers import PackageSerializer, ProjectSerializer
 from magpy.request import PypiResponse
-import api
+
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
+from unittest.mock import patch
 
 from api.models import Project
 
+class MockResponse:
+ 
+    def __init__(self):
+        self.status_code = 200
+ 
+    def json(self):
+        return {
+            "info": {
+                "version": "3.2.6"
+            }
+        }
 
 
-
-class UnitTests(TestCase):
+class UnitTestsSerializers(TestCase):
 
     def setUp(self):
         self.client = APIClient()
 
+    @patch("requests.get", return_value=MockResponse())
+    def test_get_package_with_version_if_param_dont_has_version (self, mocked):
+        package = {"name": "Django"}
+        expect = {"name": "Django", "version": "3.2.6" }
+       
 
+        self.assertEqual(ProjectSerializer.get_package_with_version(package), expect )
     
 
 
