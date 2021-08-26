@@ -28,10 +28,10 @@ class ProjectSerializer(serializers.ModelSerializer):
         return {"name": package["name"], "version": pypi_response.get_version()}
 
 
-    @staticmethod
-    def create_packages (packages, project):
+    @classmethod
+    def create_packages (cls, packages, project):
         for package in packages:
-            new_package = ProjectSerializer.get_package_with_version(package)
+            new_package = cls.get_package_with_version(package)
             PackageRelease.objects.create(project=project, **new_package)
 
 

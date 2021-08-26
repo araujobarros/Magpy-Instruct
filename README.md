@@ -207,6 +207,34 @@ k6 run -e API_BASE='http://localhost:8080/' tests-open.js
 - [Não teste apenas o _Happy Path_](https://cucumber.io/blog/test-automation/happy-unhappy-paths-why-you-need-to-test-both/)
 
 ---
+## Doc
+-Clone o repositório
+
+-Na pasta raiz do projeto
+
+-Crie o ambiente virtual
+
+-instale do pipenv
+$ pip install pipenv
+
+-Especifique a versão do python
+$ pipenv --python 3.9
+
+-Instale as dependências do pipfile
+$ pipenv install
+
+-Ative o shell Pipenv
+$ shell pipenv
+
+-Crie o app com django
+$ python3.9 manage.py startapp magpyapi  
+
+-Crie a estrutura do banco de dados
+$ python3.9 manage.py migrate
+
+-Execute o servidor local
+$ python3.9 manage.py runserver
+
 
 ## Referências
 https://www.django-rest-framework.org/
@@ -217,5 +245,16 @@ https://realpython.com/django-rest-framework-quick-start/
 https://stackoverflow.com/questions/34414326/why-is-assertdictequal-needed-if-dicts-can-be-compared-by/34414463
 https://medium.com/@ksarthak4ever/test-driven-development-tdd-in-django-and-django-rest-framework-drf-a889a8068cb7
 
+Ambiente de instalação
+https://pipenv-fork.readthedocs.io/en/latest/basics.html
+https://medium.com/@patrickporto/introdu%C3%A7%C3%A3o-ao-pipenv-49aa9685dfe4
 
+Testes
+https://medium.com/@ksarthak4ever/test-driven-development-tdd-in-django-and-django-rest-framework-drf-a889a8068cb7
+https://www.20tab.com/en/blog/test-python-mocking/
+https://realpython.com/python-mock-library/
+https://kimsereylam.com/python/2021/03/19/how-to-use-patch-in-python-unittest.html
+
+Recursos lógicos
+https://stackoverflow.com/questions/21809112/what-does-tuple-and-dict-mean-in-python
 **Boa sorte!**
