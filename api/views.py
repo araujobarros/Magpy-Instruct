@@ -7,6 +7,27 @@ from .serializers import  ProjectSerializer
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
+
+    """
+    retrieve:
+        Return a project instance.
+
+    list:
+        Return all projects, ordered by most recently joined.
+
+    create:
+        Create a new project.
+
+    delete:
+        Remove an existing project.
+
+    partial_update:
+        Update one or more fields on an existing project.
+
+    update:
+        Update a project.
+    """
+
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     lookup_field = "name"

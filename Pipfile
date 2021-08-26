@@ -12,6 +12,7 @@ gunicorn = "~=20.1"
 whitenoise = "~=5.2"
 django-heroku = "~=0.3"
 django-rest-swagger = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
