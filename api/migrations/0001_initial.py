@@ -16,17 +16,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Project',
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('id', models.UUIDField(
+                    default=uuid.uuid4,
+                    editable=False,
+                    primary_key=True,
+                    serialize=False)),
                 ('name', models.CharField(max_length=255, unique=True)),
             ],
         ),
         migrations.CreateModel(
             name='PackageRelease',
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('id', models.UUIDField(
+                    default=uuid.uuid4,
+                    editable=False,
+                    primary_key=True,
+                    serialize=False)),
                 ('name', models.CharField(max_length=255)),
                 ('version', models.CharField(max_length=255)),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='packages', related_query_name='package', to='api.project')),
+                ('project', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='packages',
+                    related_query_name='package',
+                    to='api.project')),
             ],
         ),
     ]
