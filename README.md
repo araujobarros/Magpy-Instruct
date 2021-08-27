@@ -62,7 +62,7 @@ Nota: Se por algum motivo algum pacote não for corretamente instalado é possí
 - `run --source=./api --omit=api/tests/mocks.py manage.py test api.tests.unit_tests api.tests.test_integration`.
 - `coverage report -m`.
 
-2. Testando a aplicação
+2. Testando esta aplicação em funcionamento
 
 - `k6 run -e API_BASE='https://magpy-instruct-api.herokuapp.com/' tests-open.js`
 
