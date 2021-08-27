@@ -7,7 +7,7 @@ Projeto realizado com Django Rest Framework, para cadastro e consulta de projeto
 As rotas disponíveis para consulta, assim como o formato da consulta encontram-se em:
 https://magpy-instruct-api.herokuapp.com/swagger/
 
-Nesta doc por exemplo é possível ver que pra realizar uma de consulta de todos os projetos cadastrados, basta fazer uma requisição GET para:
+Nesta doc por exemplo é possível ver que pra realizar uma consulta de todos os projetos cadastrados, basta fazer uma requisição GET para:
 https://magpy-instruct-api.herokuapp.com/api/projects
 
 
