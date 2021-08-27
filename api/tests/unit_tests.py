@@ -6,29 +6,29 @@ from api.serializers import ProjectSerializer
 from api.tests.mocks import MockPypiResponse
 from api.models import PackageRelease, Project
 
+
 class UnitTestsSerializers(TestCase):
 
     def setUp(self):
         self.client = APIClient()
         Project.objects.create(name="titan")
-       
 
     @patch("magpy.request.PypiResponse", return_value=MockPypiResponse())
-    def test_get_package_with_version_if_param_dont_has_version (self, mocked):
+    def test_get_package_with_version_if_param_dont_has_version(self, mocked):
         package = {"name": "Django"}
-        expect = {"name": "Django", "version": "3.2.6" }
-        self.assertEqual(ProjectSerializer.get_package_with_version(package), expect )
-
+        expect = {"name": "Django", "version": "3.2.6"}
+        self.assertEqual(
+            ProjectSerializer.get_package_with_version(package), expect)
 
     @patch("magpy.request.PypiResponse", return_value=MockPypiResponse())
-    def test_get_package_with_version_if_param_has_version (self, mocked):
+    def test_get_package_with_version_if_param_has_version(self, mocked):
         package = {"name": "Django", "version": "3.2.5"}
-        expect = {"name": "Django", "version": "3.2.5" }
-        self.assertEqual(ProjectSerializer.get_package_with_version(package), expect )
-    
+        expect = {"name": "Django", "version": "3.2.5"}
+        self.assertEqual(
+            ProjectSerializer.get_package_with_version(package), expect)
 
     @patch("magpy.request.PypiResponse", return_value=MockPypiResponse())
-    def test_create_packages (self, mocked):
+    def test_create_packages(self, mocked):
         packages = [{"name": "Django"}, {"name": "graphene", "version": "2.0"}]
         project = Project.objects.get(name="titan")
 
@@ -45,7 +45,7 @@ class UnitTestsSerializers(TestCase):
         self.assertEqual(inserted_package[1].version, "2.0")
 
     @patch("magpy.request.PypiResponse", return_value=MockPypiResponse())
-    def test_create_project (self, mocked):
+    def test_create_project(self, mocked):
         project = {
             "name": "titan2",
             "packages": [

@@ -7,32 +7,27 @@ from rest_framework import status
 from api.models import Project
 
 
-
-
 class ProjectsApiTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
 
-
-    def test_create_project_were_packages_have_correct_versions_and_names(self):
+    def test_create_project_with_correct_packages(self):
         project = {
             "name": "titan",
             "packages": [
                 {"name": "Django", "version": "3.2.5"},
                 {"name": "graphene", "version": "2.0"}]}
 
+        response = self.client.post(
+            '/api/projects/',
+            data=project, format='json')
 
-        response = self.client.post('/api/projects/', data=project, format='json')
-
-        exists = Project.objects.filter(
-            name = project["name"]
-        ).exists()
+        exists = Project.objects.filter(name=project["name"]).exists()
 
         self.assertTrue(exists)
         self.assertDictEqual(response.data, project)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
 
     def test_create_project_with_incorrect_packages(self):
         project_with_incorrect_package_name = {
@@ -44,7 +39,7 @@ class ProjectsApiTests(TestCase):
             "name": "titan",
             "packages": [
                 {"name": "Django", "version": "3.2.5"},
-                {"name": "graphene", "version": "200"}]} 
+                {"name": "graphene", "version": "200"}]}
 
         projects = [
             project_with_incorrect_package_name,
@@ -52,15 +47,17 @@ class ProjectsApiTests(TestCase):
         ]
 
         for project in projects:
-            response = self.client.post('/api/projects/', data=project, format='json')
+            response = self.client.post(
+                '/api/projects/',
+                data=project,
+                format='json')
 
-            exists = Project.objects.filter(
-                name = project["name"]).exists()
+            exists = Project.objects.filter(name=project["name"]).exists()
 
             self.assertFalse(exists)
-            self.assertDictEqual(response.data, {"error": "One or more packages doesn't exist"})
+            self.assertDictEqual(
+                response.data, {"error": "One or more packages doesn't exist"})
             self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
 
     def test_create_project_without_package_version(self):
         project_without_package_version = {
@@ -75,17 +72,16 @@ class ProjectsApiTests(TestCase):
             format='json')
 
         exists = Project.objects.filter(
-            name = project_without_package_version["name"]).exists()
+            name=project_without_package_version["name"]).exists()
 
         self.assertTrue(exists)
         for package in response.data["packages"]:
             self.assertIn("version", package)
             self.assertIsNot(package["version"], '')
 
-       
     def test_find_project_by_name(self):
 
-        project =  {
+        project = {
             "name": "titan",
             "packages": [
                 {"name": "Django", "version": "3.2.6"},
@@ -99,16 +95,14 @@ class ProjectsApiTests(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-
     def test_find_nonexistent_project(self):
         response = self.client.get('/api/projects/titan/')
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-
     def test_delete_project_by_name(self):
 
-        project =  {
+        project = {
             "name": "titan",
             "packages": [
                 {"name": "Django", "version": "3.2.6"},
@@ -119,18 +113,17 @@ class ProjectsApiTests(TestCase):
             data=project, format='json')
 
         exists_before_deletion = Project.objects.filter(
-            name = project["name"]).exists()
+            name=project["name"]).exists()
 
         self.assertTrue(exists_before_deletion)
 
         response = self.client.delete('/api/projects/titan/')
 
         exists_after_deletion = Project.objects.filter(
-            name = project["name"]).exists()
+            name=project["name"]).exists()
 
         self.assertFalse(exists_after_deletion)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
 
     def test_delete_nonexistent_project_by_name(self):
 
