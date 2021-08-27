@@ -50,6 +50,19 @@ Nota: Se por algum motivo algum pacote não for corretamente instalado é possí
 
 - `python3 manage.py runserver`
 
+### Rodando testes
+
+1. Rodando todos os testes locais com relatório
+
+- `run --source=./api --omit=api/tests/mocks.py manage.py test api.tests.unit_tests api.tests.test_integration`.
+- `coverage report -m`.
+
+2. Testando a aplicação
+
+- `k6 run -e API_BASE='https://magpy-instruct-api.herokuapp.com/' tests-open.js`
+
+
+
 
 ### Referências
 
@@ -62,20 +75,20 @@ Nota: Se por algum motivo algum pacote não for corretamente instalado é possí
 2. Requests:
 - https://realpython.com/python-requests/
 
-2. Pipenv:
+3. Pipenv:
 - https://pipenv-fork.readthedocs.io/en/latest/basics.html
 - https://medium.com/@patrickporto/introdu%C3%A7%C3%A3o-ao-pipenv-49aa9685dfe4
 
-3. Testes:
+4. Testes:
 - https://medium.com/@ksarthak4ever/test-driven-development-tdd-in-django-and-django-rest-framework-drf-a889a8068cb7
 - https://www.20tab.com/en/blog/test-python-mocking/
 - https://realpython.com/python-mock-library/
 - https://kimsereylam.com/python/2021/03/19/how-to-use-patch-in-python-unittest.html
 - https://medium.com/@ksarthak4ever/test-driven-development-tdd-in-django-and-django-rest-framework-drf-a889a8068cb7
 
-4. Swagger
+5. Swagger
 - https://github.com/axnsan12/drf-yasg#installation
 
-5. Curiosidades
+6. Curiosidades
 - https://stackoverflow.com/questions/21809112/what-does-tuple-and-dict-mean-in-python
 - https://stackoverflow.com/questions/34414326/why-is-assertdictequal-needed-if-dicts-can-be-compared-by/34414463

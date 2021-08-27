@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from magpy.request import PypiResponse
+from api.request import PypiResponse
 from .models import Project
 from .serializers import ProjectSerializer
 
@@ -60,4 +60,4 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         serializer = ProjectSerializer(data=request.data)
-        return ProjectViewSet.appropriate_response(serializer)
+        return self.appropriate_response(serializer)

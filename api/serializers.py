@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from magpy.request import PypiResponse
+from .request import PypiResponse
 from .models import PackageRelease, Project
 
 

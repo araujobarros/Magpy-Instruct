@@ -1,5 +1,4 @@
-from magpy.request import PypiResponse
-import api
+from api.request import PypiResponse
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
