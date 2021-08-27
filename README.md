@@ -50,7 +50,7 @@ Nota: Se por algum motivo algum pacote não for corretamente instalado é possí
 
 - `python3 manage.py runserver`
 
-É possível verificar o funcionamento acessando a porta informada como resposta no terminal que provavelmente será http://127.0.0.1:8000/.
+- É possível verificar o funcionamento acessando a porta informada como resposta no terminal que provavelmente será http://127.0.0.1:8000/.
 
 - Verifique o funcionamento da aplicação em http://127.0.0.1:8000/api/projects
 - E a documentação em http://127.0.0.1:8000/swagger
