@@ -18,7 +18,7 @@ https://magpy-instruct-api.herokuapp.com/api/projects
 - `git clone git@github.com:araujobarros/Magpy-Instruct.git`.
 
 - Entre na pasta do repositório que você acabou de clonar:
-  - `Magpy-Instruct`
+  - `cd Magpy-Instruct`
 
 2. Crie e ative o ambiente virtual para o projeto
 
