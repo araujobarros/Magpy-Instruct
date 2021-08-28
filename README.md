@@ -9,7 +9,7 @@ As rotas disponíveis para consulta, assim como o formato da consulta encontram-
 - Visão swagger: https://magpy-instruct-api.herokuapp.com
 - Visão redoc: https://magpy-instruct-api.herokuapp.com/redoc
 - Visão yaml: https://magpy-instruct-api.herokuapp.com/.yaml
-- Visão yaml: https://magpy-instruct-api.herokuapp.com/.json
+- Visão json: https://magpy-instruct-api.herokuapp.com/.json
 
 
 Pelo Swagger por exemplo é possível ver que pra realizar uma consulta de todos os projetos cadastrados, basta fazer uma requisição GET para:
