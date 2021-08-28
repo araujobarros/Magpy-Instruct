@@ -54,9 +54,7 @@ class UnitTestsSerializers(TestCase):
             "name": "titan2",
             "packages": [
                 {"name": "Django"},
-                {"name": "graphene", "version": "2.0"}
-            ]
-        }
+                {"name": "graphene", "version": "2.0"}]}
 
         ProjectSerializer.create(self, project)
         project = Project.objects.get(name="titan2")
