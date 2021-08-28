@@ -15,9 +15,7 @@ class PypiResponse():
         return response
 
     def get_version(self):
-        if self.version == "":
-            return self.version
-        else:
+        if self.version != "":
             self.version = self.request_package_response(
             ).json()["info"]["version"]
             return self.version
