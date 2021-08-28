@@ -28,11 +28,13 @@ router.register(r'projects', views.ProjectViewSet)
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="MagPy API",
       default_version='v1',
-      description="Test description",
+      description=(
+          f"Aplicação para cadastro e consulta "
+          f"de projetos que possuam pacotes válidos."),
       terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
+      contact=openapi.Contact(email="araujo.barros@matematica.ufrj.br"),
       license=openapi.License(name="BSD License"),
    ),
    public=True,
