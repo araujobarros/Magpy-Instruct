@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6d320dce68657f7d6c66570add737e44e8a86cce4ffd9536b95abf7956f90396"
+            "sha256": "a6a2cdff71c354ab25a70baef49ef31ce07c1fd30bef6384fe5a1105897bd605"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -271,6 +271,14 @@
             "markers": "python_version >= '3.6'",
             "version": "==21.0"
         },
+        "pep8": {
+            "hashes": [
+                "sha256:b22cfae5db09833bb9bd7c8463b53e1a9c9b39f12e304a8d0bba729c501827ee",
+                "sha256:fe249b52e20498e59e0b5c5256aa52ee99fc295b26ec9eaa85776ffdb9fe6374"
+            ],
+            "index": "pypi",
+            "version": "==1.7.1"
+        },
         "psycopg2": {
             "hashes": [
                 "sha256:079d97fc22de90da1d370c90583659a9f9a6ee4007355f5825e5f1c70dffc1fa",
@@ -311,11 +319,11 @@
         },
         "ruamel.yaml": {
             "hashes": [
-                "sha256:4185fcfa9e037fea9ffd0bb6172354a03ec98c21e462355d72e068c74e493512",
-                "sha256:b59c548ba6a2a99a97a842db2321c5adf28470d1decb04bdd82ce9535936a2fa"
+                "sha256:7c64b97d4f4588410f19c4f259e4f724803b1981334654f516936f5c5710fe2a",
+                "sha256:c61a0d2d01a64094f0843e2721968e5ee2de93fc220ab6eeae2d1bd121e6e2b3"
             ],
             "markers": "python_version >= '3'",
-            "version": "==0.17.14"
+            "version": "==0.17.15"
         },
         "ruamel.yaml.clib": {
             "hashes": [
