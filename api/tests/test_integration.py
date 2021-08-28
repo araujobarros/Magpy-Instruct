@@ -11,6 +11,19 @@ class ProjectsApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
+    def test_create_invalid_project(self):
+        project = {
+            "name": "titan"}
+
+        response = self.client.post(
+            '/api/projects/',
+            data=project, format='json')
+
+        exists = Project.objects.filter(name=project["name"]).exists()
+
+        self.assertFalse(exists)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
     def test_create_project_with_correct_packages(self):
         project = {
             "name": "titan",
