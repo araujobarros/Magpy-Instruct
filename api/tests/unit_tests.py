@@ -68,15 +68,15 @@ class UnitTestsSerializers(TestCase):
         self.assertEqual(inserted_packages[1].name, "graphene")
         self.assertEqual(inserted_packages[1].version, "2.0")
 
+
 class UnitTestsViews(TestCase):
 
     def test_appropriate_response_if_serializer_is_not_valid(self):
         serializer = ProjectSerializer(data={
-        "packages": [
-            {"name": "Django", "version": "3.2.6"},
-        ]})
+            "packages": [
+                {"name": "Django", "version": "3.2.6"}
+            ]})
 
         response = ProjectViewSet.appropriate_response(serializer)
-       
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
