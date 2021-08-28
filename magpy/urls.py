@@ -31,8 +31,8 @@ schema_view = get_schema_view(
       title="MagPy API",
       default_version='v1',
       description=(
-          f"Aplicação para cadastro e consulta "
-          f"de projetos que possuam pacotes válidos."),
+          f"Application for registering and consulting projects "
+          f"that have valid packages."),
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="araujo.barros@matematica.ufrj.br"),
       license=openapi.License(name="BSD License"),
